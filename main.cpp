@@ -1,14 +1,14 @@
 #include <iostream>
+
 /**
  * C++ beginner program designed to learn about the project testing object oriented programming
  * @author Rafael Rios
- * @version 1.0 since 1.0
+ * @version 1.5 since 1.0
  */
 
-//TODO function does not work
 bool contains(std::string list, char character){
 
-    for (int i; i < list.size(); i++){
+    for (int i = 0; i < list.size(); i++){
         if (character == list.at(i)){
             return true;
         }
@@ -17,18 +17,29 @@ bool contains(std::string list, char character){
 }
 
 //block of functions to simplify printing to console to save time
-
-void print(std::string toPrint){
+static void print(std::string toPrint){
     std::cout<<toPrint<<std::endl;
 }
-void print(int toPrint){
+static void print(std::string toPrint, std::string endBehaviour){
+    std::cout<<toPrint<<endBehaviour<<std::flush;
+}
+static void print(int toPrint){
     std::cout<<toPrint<<std::endl;
 }
-void print(float toPrint){
+static void print(int toPrint, std::string endBehaviour){
+    std::cout<<toPrint<<endBehaviour<<std::flush;
+}
+static void print(float toPrint){
     std::cout<<toPrint<<std::endl;
 }
-void print(char toPrint){
+static void print(float toPrint, std::string endBehaviour){
+    std::cout<<toPrint<<endBehaviour<<std::flush;
+}
+static void print(char toPrint){
     std::cout<<toPrint<<std::endl;
+}
+static void print(char toPrint, std::string endBehaviour){
+    std::cout<<toPrint<<endBehaviour<<std::flush;
 }
 //end of block of functions to simplify printing to console to save time
 
@@ -47,7 +58,6 @@ int main() {
 
     std::cout<<"your name is "<<name<<" your last name is "<<lastName<<" your age is "<<age<<std::endl;
 
-    //TODO function does not work
     bool hasWord = contains("Frogissima", 'a');
 
     if (hasWord){

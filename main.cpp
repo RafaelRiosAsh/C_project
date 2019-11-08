@@ -5,8 +5,26 @@
  * @author Rafael Rios
  * @version 1.5 since 1.0
  */
+//function to simplify printing to console to save time
+template < typename T > void print(T t){
+    std::cout << t << std::flush;
+}
+template < typename T, typename ...F > void print(T t, F ...f) {
+    std::cout << t;
+    print(f...);
+}
 
-bool contains(std::string list, char character){
+template < typename T > void printl(T t){
+    std::cout << t << std::endl;
+}
+template < typename T, typename ...F > void printl(T t, F ...f) {
+    std::cout << t;
+    printl(f...);
+}
+
+//end of function to simplify printing to console to save time
+
+static bool contains(std::string list, char character){
 
     for (int i = 0; i < list.size(); i++){
         if (character == list.at(i)){
@@ -16,56 +34,33 @@ bool contains(std::string list, char character){
     return false;
 }
 
-//block of functions to simplify printing to console to save time
-static void print(std::string toPrint){
-    std::cout<<toPrint<<std::endl;
-}
-static void print(std::string toPrint, std::string endBehaviour){
-    std::cout<<toPrint<<endBehaviour<<std::flush;
-}
-static void print(int toPrint){
-    std::cout<<toPrint<<std::endl;
-}
-static void print(int toPrint, std::string endBehaviour){
-    std::cout<<toPrint<<endBehaviour<<std::flush;
-}
-static void print(float toPrint){
-    std::cout<<toPrint<<std::endl;
-}
-static void print(float toPrint, std::string endBehaviour){
-    std::cout<<toPrint<<endBehaviour<<std::flush;
-}
-static void print(char toPrint){
-    std::cout<<toPrint<<std::endl;
-}
-static void print(char toPrint, std::string endBehaviour){
-    std::cout<<toPrint<<endBehaviour<<std::flush;
-}
-//end of block of functions to simplify printing to console to save time
-
-
 int main() {
     int age;
     std::string name;
     std::string lastName;
 
-    std::cout<<"please enter your name"<<std::endl;
+    printl("please enter your name");
     std::cin>> name;
     std::cin>> lastName;
 
-    std::cout<<"please enter your age"<<std::endl;
+    printl("please enter your age");
     std::cin>> age;
 
-    std::cout<<"your name is "<<name<<" your last name is "<<lastName<<" your age is "<<age<<std::endl;
 
+
+    printl("your name is ",name," your last name is ",lastName," your age is ",age);
+
+    //random test function that checks if a character is inside a string
     bool hasWord = contains("Frogissima", 'a');
 
     if (hasWord){
-        print("the word contains the character");
+        printl("the word contains the character");
     }
     else {
-        print("the word does not contain the character");
+        printl("the word does not contain the character");
     }
+
+
 
     return 0;
 }

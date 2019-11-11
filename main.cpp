@@ -1,29 +1,23 @@
 #include <iostream>
-
+#include <cmath>
 /**
  * C++ beginner program designed to learn about the project testing object oriented programming
  * @author Rafael Rios
  * @version 2.0 since 1.0
  */
-//function to simplify printing to console to save time
-template < typename T > void print(T t){
-    std::cout << t << std::flush;
-}
+
+//functions to simplify printing to console to save time
 template < typename T, typename ...F > void print(T t, F ...f) {
     std::cout << t;
-    print(f...);
-}
-
-template < typename T > void printl(T t){
-    std::cout << t << std::endl;
+    (std::cout << ... << f) << std::endl;
 }
 template < typename T, typename ...F > void printl(T t, F ...f) {
     std::cout << t;
-    printl(f...);
+    (std::cout <<...<< f) << std::flush;
 }
+//end of functions to simplify printing to console to save time
 
-//end of function to simplify printing to console to save time
-
+//random test function that checks if a character is inside a string
 static bool contains(std::string list, char character){
 
     for (int i = 0; i < list.size(); i++){
@@ -34,32 +28,58 @@ static bool contains(std::string list, char character){
     return false;
 }
 
-//fun test function to make C++ look more like Java or python
-template < typename T > auto input (T t){
+//test function to make C++ look more like Java or python
+template < typename T > std::string outdated (T t){
     std::string ans;
     printl(t);
     std::cin >> ans;
     return ans;
 }
 
+//second test to make c++ look more like java or python
+// second test successful
+template <typename T> T input (T t){
+    T ans;
+    std::cin >> ans;
+    return ans;
+}
+
+float getBMI(float height, float weight){
+    return weight / (pow(height,2));
+}
+
+std::string printBMI(float height, float weight){
+    float bmi = getBMI(height, weight);
+    if (bmi < 20){
+        return"underweight";
+    }
+    else if (bmi < 25){
+        return "normal";
+    }
+    else if (bmi < 30){
+        return"overweight";
+    }
+    else{
+        return "morbid overweight";
+    }
+}
+//recursive test function
+void recursive(int counter, int end){
+    if (counter >= end){
+        print(counter);
+    }
+    else{
+        recursive(counter+1, end);
+    }
+}
+
+
 int main() {
-    std::string age;
-    std::string name;
-    std::string lastName;
+    float height, weight;
+    std::cout << "please enter your height and weight" << std::endl;
+    height = input(height);
+    weight = input(weight);
 
-    printl("please enter your name");
-    std::cin >> name;
-    std::cin >> lastName;
-
-    printl("your name is ",name," your last name is ",lastName," your age is ",age);
-
-    //random test function that checks if a character is inside a string
-    bool hasWord = contains("Frogissima", 'a');
-    if (hasWord){
-        printl("the word contains the character");
-    }
-    else {
-        printl("the word does not contain the character");
-    }
+    print(printBMI(height,weight));
     return 0;
 }

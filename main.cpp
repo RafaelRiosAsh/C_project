@@ -1,22 +1,12 @@
 #include <iostream>
 #include <cmath>
+#include "Cprint.h"
 /**
  * C++ beginner program designed to learn about the project testing object oriented programming
  * @author Rafael Rios
- * @version 2.2 since 1.0
+ * @version 2.5 since 1.0
  */
-
-
-//functions to simplify printing to console to save time
-template < typename T, typename ...F > void print(T t, F ...f) {
-    std::cout << t;
-    (std::cout << ... << f) << std::endl;
-}
-template < typename T, typename ...F > void printl(T t, F ...f) {
-    std::cout << t;
-    (std::cout << ... << f) << std::flush;
-}
-//end of functions to simplify printing to console to save time
+using namespace Cprint;
 
 //random test function that checks if a character is inside a string
 static bool contains(std::string list, char character){
@@ -98,7 +88,7 @@ int f(int n){
 int main() {
 
     float height, weight;
-    std::cout << "please enter your height and weight" << std::endl;
+    print("please enter your height and weight");
     height = input(height);
     weight = input(weight);
 

@@ -6,9 +6,10 @@
 #define UNTITLED_CPRINT_H
 
 
-class Cprint {
-
-};
+namespace Cprint {
+    template < typename T, typename ...F > static void print(T t, F ...f);
+    template < typename T, typename ...F > static void printl(T t, F ...f);
+}
 
 
 #endif //UNTITLED_CPRINT_H

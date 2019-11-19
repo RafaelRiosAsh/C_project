@@ -3,8 +3,9 @@
 /**
  * C++ beginner program designed to learn about the project testing object oriented programming
  * @author Rafael Rios
- * @version 2.0 since 1.0
+ * @version 2.2 since 1.0
  */
+
 
 //functions to simplify printing to console to save time
 template < typename T, typename ...F > void print(T t, F ...f) {
@@ -13,7 +14,7 @@ template < typename T, typename ...F > void print(T t, F ...f) {
 }
 template < typename T, typename ...F > void printl(T t, F ...f) {
     std::cout << t;
-    (std::cout <<...<< f) << std::flush;
+    (std::cout << ... << f) << std::flush;
 }
 //end of functions to simplify printing to console to save time
 
@@ -44,6 +45,7 @@ template <typename T> T input (T t){
     return ans;
 }
 
+//BMI calculator example
 float getBMI(float height, float weight){
     return weight / (pow(height,2));
 }
@@ -64,22 +66,47 @@ std::string printBMI(float height, float weight){
     }
 }
 //recursive test function
-void recursive(int counter, int end){
-    if (counter >= end){
-        print(counter);
+int recursive(int counter, int end){
+    if (counter >= end) {
+        return counter;
     }
     else{
-        recursive(counter+1, end);
+        print(counter);
+        return recursive(counter+1, end);
     }
 }
 
+void recFib(int firstDigit, int secondDigit, int end){
+    if (secondDigit >= end){
+        return;
+    }
+    else {
+        printl(secondDigit, " ");
+        return recFib(secondDigit, secondDigit+firstDigit, end);
+    }
+}
+
+int f(int n){
+    if (n <= 1) {
+        return n;
+    }
+    else {
+        return n * f(n - 1);
+    }
+}
 
 int main() {
+
     float height, weight;
     std::cout << "please enter your height and weight" << std::endl;
     height = input(height);
     weight = input(weight);
 
     print(printBMI(height,weight));
+    //print(f(4));
+    //print(recursive(0,10));
+    print("please enter when you'd like the count to end");
+    int end = input(end);
+    recFib(0,1,end);
     return 0;
 }
